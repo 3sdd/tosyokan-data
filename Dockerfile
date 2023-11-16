@@ -6,7 +6,7 @@ RUN apt-get update && \
 
 
 COPY src /app/src
-COPY data /app/data
+COPY data /app/src/data
 
 WORKDIR /app/src
 
