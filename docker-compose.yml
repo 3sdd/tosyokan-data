@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  script:
+    build: .
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+    entrypoint: ["python","/app/src/main.py"]

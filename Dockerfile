@@ -5,11 +5,8 @@ RUN apt-get update && \
     pip install --upgrade pip
 
 
-COPY src /app/src
-COPY data /app/src/data
+COPY src/requirements.txt /app/src/requirements.txt
 
 WORKDIR /app/src
 
 RUN pip install -r /app/src/requirements.txt
-
-CMD [ "python","main.py" ]
