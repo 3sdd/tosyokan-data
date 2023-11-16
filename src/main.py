@@ -1,16 +1,25 @@
 import csv
 import json
+import os
 import datetime
+import argparse
 
 
-def main():
-    print("main")
+def convert(input: str):
+    print("start")
+
+    if input == "lib":
+        source_filename = "isil_libraries_20231031_J.csv"
+        result_filename = "libraries.json"
+    elif input == "lib_public":
+        source_filename = "isil_libraries_public_20231031_J.csv"
+        result_filename = "libraries_public.json"
+    else:
+        raise Exception("invalid argument: input")
 
     # データ読み込み
     result = []
-    with open(
-        "../data/isil_libraries_public_20231031_J.csv", "r", encoding="utf-8"
-    ) as f:
+    with open(os.path.join("../data/", source_filename), "r", encoding="utf-8") as f:
         reader = csv.reader(f, delimiter=",")
 
         # 最初の行のヘッダーは飛ばす
@@ -40,11 +49,17 @@ def main():
     # 変換結果を保存
     now = datetime.datetime.now().isoformat()
     data = {"updated_at": now, "data": result}
-    with open("../results/libraries_public.json", "w", encoding="utf-8") as f:
+    with open(os.path.join("../results/", result_filename), "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-    print("done")
+    print("finished")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--input", type=str, default="lib", choices=["lib", "lib_public"]
+    )
+    arg = parser.parse_args()
+
+    convert(arg.input)
