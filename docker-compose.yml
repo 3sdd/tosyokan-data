@@ -6,4 +6,5 @@ services:
     volumes:
       - ./src:/app/src
       - ./data:/app/data
+      - ./results:/app/results
     entrypoint: ["python","/app/src/main.py"]
