@@ -6,6 +6,18 @@
 
 ## 実行方法
 
+公共図書館以外のデータを変換
+```bash
+docker compose run script --input=lib
+```
+
+公共図書館のデータを変換
+```bash
+docker compose run script --input=lib_public
+```
+
+
+
 dockerビルド。
 
 ```bash
