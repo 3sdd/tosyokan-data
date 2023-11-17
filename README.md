@@ -18,18 +18,6 @@ docker compose run script --input=lib_public
 
 
 
-dockerビルド。
-
-```bash
-docker build --tag 'my-tosyokan-data-converter' .
-```
-
-変換の実行。
-```bash
-docker run my-tosyokan-data-converter
-```
-
-
 ## データ
 
 `data`フォルダーに以下から取得した図書館データ（ISIL管理台帳ファイル（2023年10月31日現在））のcsvファイルを配置している。
@@ -51,6 +39,7 @@ address1,address2の名前は変更するかもしれない。
     "isil": "ISIL",
     "name_jp": "図書館名(日本語)",
     "name_en": "図書館名(英語)",
+    "yomi": "読み仮名",
     "postal_code":"郵便番号",
     "prefecture":"図書館所在地の都道府県",
     "address1": "市区町村",
@@ -58,8 +47,12 @@ address1,address2の名前は変更するかもしれない。
     "telephone_number":"電話番号",
     "fax_number":"代表FAX番号",
     "url": "URL",
+    "former_isil": "旧isil",
     "registered_at":"登録日",
     "updated_at":"更新日"
 }
 
 ```
+
+            "registered_at": "2011/10/1 0:00:00",
+            "updated_at": "2014/10/23 0:00:00"
